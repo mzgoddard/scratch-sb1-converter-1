@@ -61,12 +61,10 @@ const CONSUMER_PROTOS = {
     [TYPES.OBJECT_REF]: {type: Reference, read: ReferenceBE}
 };
 
-const CONSUMERS = new Array(256).fill(null);
-for (const index of Object.values(TYPES)) {
-    if (CONSUMER_PROTOS[index]) {
-        CONSUMERS[index] = new Consumer(CONSUMER_PROTOS[index]);
-    }
-}
+const CONSUMERS = Array.from(
+    {length: 256},
+    (_, i) => (CONSUMER_PROTOS[i] ? new Consumer(CONSUMER_PROTOS[i]) : null)
+);
 
 const builtinConsumer = new Consumer({
     type: BuiltinObjectHeader,
@@ -84,7 +82,7 @@ class FieldIterator {
     }
 
     next () {
-        if (this.stream.position >= this.stream.uint8.length) {
+        if (this.stream.position >= this.stream.uint8a.length) {
             return {
                 value: null,
                 done: true
