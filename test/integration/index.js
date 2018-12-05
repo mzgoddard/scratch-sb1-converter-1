@@ -1,3 +1,5 @@
+require('@babel/register');
+
 const test = require('tap').test;
 
 const SB1 = require('../..');

@@ -7,14 +7,6 @@ SB1View.register(require('./js-primitive').JSPrimitiveRenderer);
 SB1View.register(require('./object').ObjectRenderer);
 SB1View.register(require('./viewable').ViewableRenderer);
 
-const createDownload = (name, mime, content) => {
-    const anchor = document.createElement('a');
-    anchor.download = name;
-    anchor.href = URL.createObjectURL(new Blob([content], {type: mime}));
-    anchor.innerText = name;
-    return anchor;
-};
-
 let last = null;
 const readFile = f => {
     const reader = new FileReader();

@@ -18,13 +18,17 @@
     "lint": "eslint .",
     "prepublish": "in-publish && npm run build || not-in-publish",
     "start": "webpack-dev-server",
-    "test:unit": "tap ./test/unit/*.js",
-    "test:integration": "tap ./test/integration/*.js",
+    "test:build": "babel --presets @babel/preset-env . --out-dir dist/test-tmp --ignore node_modules,playground,babel,dist --source-maps",
+    "test:unit": "npm run test:build && tap ./dist/test-tmp/test/unit/*.js",
+    "test:integration": "npm run test:build && tap ./dist/test-tmp/test/integration/*.js",
     "test": "npm run lint && npm run docs && npm run test:unit && npm run test:integration",
     "watch": "webpack --progress --colors --watch",
     "version": "json -f package.json -I -e \"this.repository.sha = '$(git log -n1 --pretty=format:%H)'\""
   },
   "dependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/register": "^7.0.0",
     "minilog": "3.1.0",
     "text-encoding": "0.6.4"
   },

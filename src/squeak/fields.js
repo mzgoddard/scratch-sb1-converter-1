@@ -9,10 +9,12 @@ class Field {
 
 export {Field};
 
-export const value = obj => {
+const valueOf = obj => {
     if (typeof obj === 'object' && obj) return obj.valueOf();
     return obj;
 };
+
+export {valueOf as value};
 
 class Value extends Field {
     constructor (classId, position, value) {
