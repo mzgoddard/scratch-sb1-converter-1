@@ -11,6 +11,10 @@ class FieldObject {
         this.fields = fields;
     }
 
+    get RAW_FIELDS () {
+        return this.fields;
+    }
+
     string (field) {
         return String(this.fields[field]);
     }
@@ -34,10 +38,6 @@ class FieldObject {
         class Base extends Super {
             get FIELDS () {
                 return FIELDS;
-            }
-
-            get RAW_FIELDS () {
-                return this.fields;
             }
 
             static get FIELDS () {
