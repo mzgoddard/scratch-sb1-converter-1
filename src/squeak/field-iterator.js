@@ -7,7 +7,15 @@ import {
 import {BuiltinObjectHeader, FieldObjectHeader, Header, Reference, Value} from './fields';
 import {TYPES} from './ids';
 
+/**
+ * Consume values for the byte stream with a iterator-like interface.
+ */
 class Consumer {
+    /**
+     * @param {function=} [type=Value]
+     * @param {function} read
+     * @param {function=} value
+     */
     constructor ({
         type = Value,
         read,
@@ -17,6 +25,12 @@ class Consumer {
         this.value = value;
     }
 
+    /**
+     * @param {ByteStream} stream
+     * @param {number} classId
+     * @param {number} position
+     * @returns {{value: *, done: boolean}}
+     */
     next (stream, classId, position) {
         return {
             value: new this.type(classId, position, this.value(stream)),
@@ -25,6 +39,10 @@ class Consumer {
     }
 }
 
+/**
+ * @const CONSUMER_PROTOS
+ * @type {Object.<number, {type, read, value}>}
+ */
 const CONSUMER_PROTOS = {
     [TYPES.NULL]: {value: () => null},
     [TYPES.TRUE]: {value: () => true},
@@ -61,6 +79,10 @@ const CONSUMER_PROTOS = {
     [TYPES.OBJECT_REF]: {type: Reference, read: ReferenceBE}
 };
 
+/**
+ * @const CONSUMERS
+ * @type {Array.<Consumer|null>}
+ */
 const CONSUMERS = Array.from(
     {length: 256},
     (_, i) => (CONSUMER_PROTOS[i] ? new Consumer(CONSUMER_PROTOS[i]) : null)
@@ -71,16 +93,29 @@ const builtinConsumer = new Consumer({
     value: () => null
 });
 
+/**
+ * Field iterator.
+ */
 class FieldIterator {
+    /**
+     * @param {ArrayBuffer} buffer
+     * @param {number} position
+     */
     constructor (buffer, position) {
         this.buffer = buffer;
         this.stream = new ByteStream(buffer, position);
     }
 
+    /**
+     * @returns {FieldIterator}
+     */
     [Symbol.iterator] () {
         return this;
     }
 
+    /**
+     * @returns {{value: *, done: boolean}}
+     */
     next () {
         if (this.stream.position >= this.stream.uint8a.length) {
             return {

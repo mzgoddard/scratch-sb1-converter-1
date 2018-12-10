@@ -1,4 +1,8 @@
 /**
+ * @typedef {function} PacketConstructor
+ */
+
+/**
  * A packet of bytes represented with getter/setter properties for decoding and
  * encoding values at given offsets mapped to names.
  *

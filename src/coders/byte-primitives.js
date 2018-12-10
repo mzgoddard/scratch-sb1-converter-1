@@ -4,6 +4,11 @@ const notImplemented = () => {
     throw new Error('Not implemented');
 };
 
+/**
+ * Is the host computer little or big endian.
+ * @const IS_HOST_LITTLE_ENDIAN
+ * @type {boolean}
+ */
 const IS_HOST_LITTLE_ENDIAN = (() => {
     const ab16 = new Uint16Array(1);
     const ab8 = new Uint8Array(ab16.buffer);
@@ -11,7 +16,49 @@ const IS_HOST_LITTLE_ENDIAN = (() => {
     return ab8[0] === 0xbb;
 })();
 
+/**
+ * @callback BytePrimitive~sizeOfCallback
+ * @param {Uint8Array} uint8a
+ * @param {number} position
+ */
+
+/**
+ * @callback BytePrimitive~writeSizeOfCallback
+ * @param {Uint8Array} uint8a
+ * @param {number} position
+ * @param {*} value
+ */
+
+/**
+ * @callback BytePrimitive~readCallback
+ * @param {Uint8Array} uint8a
+ * @param {number} position
+ */
+
+/**
+ * @callback BytePrimitive~writeCallback
+ * @param {Uint8Array} uint8a
+ * @param {number} position
+ * @param {*} value
+ */
+
+/**
+ * An interface for reading and writing binary values to typed arrays.
+ *
+ * Combined with {@link Packet Packet} this makes
+ * reading and writing packets of binary values easy to read and do.
+ */
 class BytePrimitive {
+    /**
+     * @constructor
+     * @param {object} options
+     * @param {number=} [options.size=0]
+     * @param {BytePrimitive~sizeOfCallback=} [options.sizeOf=() => size]
+     * @param {BytePrimitive~writeSizeOfCallback=} options.writeSizeOf
+     * @param {TypedArray=} [options.toBytes=new Uint8Array(1)]
+     * @param {BytePrimitive~readCallback} options.read
+     * @param {BytePrimitive~writeCallback=} options.write
+     */
     constructor ({
         size = 0,
         sizeOf = () => size,
@@ -31,6 +78,10 @@ class BytePrimitive {
         this.write = write;
     }
 
+    /**
+     * @param {number} position
+     * @returns {object}
+     */
     asPropertyObject (position) {
         const _this = this;
 
@@ -46,8 +97,19 @@ class BytePrimitive {
             enumerable: true
         };
     }
+
+    /**
+     * @param {Uint8Array} uint8a
+     * @param {number} position
+     * @returns {*}
+     */
+    read () {}
 }
 
+/**
+ * @const Uint8
+ * @type {BytePrimitive}
+ */
 const Uint8 = new BytePrimitive({
     size: 1,
     read (uint8a, position) {
@@ -97,10 +159,18 @@ if (IS_HOST_LITTLE_ENDIAN) {
     BE16 = HOSTBE_BE16;
 }
 
+/**
+ * @const Uint16BE
+ * @type {BytePrimitive}
+ */
 const Uint16BE = new BytePrimitive(Object.assign({}, BE16, {
     toBytes: new Uint16Array(1)
 }));
 
+/**
+ * @const Int16BE
+ * @type {BytePrimitive}
+ */
 const Int16BE = new BytePrimitive(Object.assign({}, BE16, {
     toBytes: new Int16Array(1)
 }));
@@ -124,6 +194,7 @@ const HOSTLE_BE32 = {
         return value;
     }
 };
+
 const HOSTBE_BE32 = {
     size: 4,
     // toBytes: Defined by instance.
@@ -151,10 +222,18 @@ if (IS_HOST_LITTLE_ENDIAN) {
     BE32 = HOSTBE_BE32;
 }
 
+/**
+ * @const Int32BE
+ * @type {BytePrimitive}
+ */
 const Int32BE = new BytePrimitive(Object.assign({}, BE32, {
     toBytes: new Int32Array(1)
 }));
 
+/**
+ * @const Uint32BE
+ * @type {BytePrimitive}
+ */
 const Uint32BE = new BytePrimitive(Object.assign({}, BE32, {
     toBytes: new Uint32Array(1)
 }));
@@ -166,6 +245,10 @@ if (IS_HOST_LITTLE_ENDIAN) {
     LE16 = HOSTLE_BE16;
 }
 
+/**
+ * @const Uint16LE
+ * @type {BytePrimitive}
+ */
 const Uint16LE = new BytePrimitive(Object.assign({}, LE16, {
     toBytes: new Uint16Array(1)
 }));
@@ -177,6 +260,10 @@ if (IS_HOST_LITTLE_ENDIAN) {
     LE32 = HOSTLE_BE32;
 }
 
+/**
+ * @const Uint32LE
+ * @type {BytePrimitive}
+ */
 const Uint32LE = new BytePrimitive(Object.assign({}, LE32, {
     toBytes: new Uint32Array(1)
 }));
@@ -218,11 +305,21 @@ if (IS_HOST_LITTLE_ENDIAN) {
     BEDOUBLE = HOSTBE_BEDOUBLE;
 }
 
+/**
+ * @const DoubleBE
+ * @type {BytePrimitive}
+ */
 const DoubleBE = new BytePrimitive(Object.assign({}, BEDOUBLE, {
     toBytes: new Float64Array(1)
 }));
 
+/**
+ * @extends BytePrimitive
+ */
 class FixedAsciiString extends BytePrimitive {
+    /**
+     * @param {number} size - Number of bytes the FixedAsciiString uses.
+     */
     constructor (size) {
         super({
             size,
