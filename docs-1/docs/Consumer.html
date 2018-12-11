@@ -62,7 +62,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Consumer"><span class="type-signature"></span>new Consumer<span class="signature">(type<span class="signature-attributes">opt</span>, read, value<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Consumer"><span class="type-signature"></span>new Consumer<span class="signature">(options)</span><span class="type-signature"></span></h4>
 
     
 
@@ -131,6 +131,48 @@
         <th>Type</th>
 
         
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Define the consumer.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
         <th>Attributes</th>
         
 
@@ -179,7 +221,8 @@
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>The <a href="Field.html">Field</a> type to
+create.</p></td>
         </tr>
 
     
@@ -192,7 +235,7 @@
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type"><a href="BytePrimitive.html">BytePrimitive</a></span>
 
 
             
@@ -214,7 +257,8 @@
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>How to read the third Field
+argument.</p></td>
         </tr>
 
     
@@ -251,7 +295,16 @@
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>How to produce the third Field
+argument from a stream. Defaults to <code>stream =&gt;
+stream.read(options.read)</code>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -394,7 +447,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Stream to read from.</p></td>
         </tr>
 
     
@@ -407,7 +460,7 @@
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type"><a href="global.html#TYPES">TYPES</a></span>
 
 
             
@@ -417,7 +470,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>FieldObject TYPES identifying the value to read.</p></td>
         </tr>
 
     
@@ -440,7 +493,8 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Position in the stream the classId was read
+from.</p></td>
         </tr>
 
     
@@ -463,6 +517,12 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>An iterator.next() return value.</li>
+</ul>
+</div>
+
 
 
 <dl class="param-type">

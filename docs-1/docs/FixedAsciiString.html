@@ -263,6 +263,12 @@
 
 
 
+<div class="description">
+    <p>Create an object that can be used with <code>Object.defineProperty</code> to read
+and write values offset by <code>position</code> and the object's <code>this.offset</code>
+from <code>this.uint8a</code> by getting or setting the property.</p>
+</div>
+
 
 
 
@@ -314,7 +320,8 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Additional offset with <code>this.offset</code> to read
+from or write to.</p></td>
         </tr>
 
     
@@ -337,6 +344,13 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>A object that can be passed as the third argument to
+<code>Object.defineProperty</code>.</li>
+</ul>
+</div>
+
 
 
 <dl class="param-type">
@@ -410,6 +424,10 @@
 
 
 
+<div class="description">
+    <p>Read a value from <code>position</code> in <code>uint8a</code>.</p>
+</div>
+
 
 
 
@@ -461,7 +479,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Array to read from.</p></td>
         </tr>
 
     
@@ -484,7 +502,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Position in <code>uint8a</code> to read from.</p></td>
         </tr>
 
     
@@ -507,6 +525,12 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>Value read from <code>uint8a</code> at <code>position</code>.</li>
+</ul>
+</div>
+
 
 
 <dl class="param-type">

@@ -161,7 +161,8 @@ reading and writing packets of binary values easy to read and do.</p></div>
 
             
 
-            <td class="description last">
+            <td class="description last"><p>Options initializing BytePrimitive instance
+with.</p>
                 <h6>Properties</h6>
                 
 
@@ -223,7 +224,8 @@ reading and writing packets of binary values easy to read and do.</p></div>
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Fixed size of the BytePrimitive.
+Should be 0 if the primitive has a variable size.</p></td>
         </tr>
 
     
@@ -262,7 +264,8 @@ reading and writing packets of binary values easy to read and do.</p></div>
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Variable size of the primitive depending on its value stored in the
+array.</p></td>
         </tr>
 
     
@@ -299,7 +302,7 @@ reading and writing packets of binary values easy to read and do.</p></div>
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Variable size of the primitive depending on the value being written.</p></td>
         </tr>
 
     
@@ -338,7 +341,9 @@ reading and writing packets of binary values easy to read and do.</p></div>
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Temporary
+space to copy bytes to/from to translate between a value and its
+representative byte set.</p></td>
         </tr>
 
     
@@ -351,7 +356,7 @@ reading and writing packets of binary values easy to read and do.</p></div>
             <td class="type">
             
                 
-<span class="param-type"><a href="BytePrimitive.html#~readCallback">BytePrimitive~readCallback</a></span>
+<span class="param-type"><a href="BytePrimitive.html#read">BytePrimitive#read</a></span>
 
 
             
@@ -373,7 +378,8 @@ reading and writing packets of binary values easy to read and do.</p></div>
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>How is a value read
+at the given position of the array.</p></td>
         </tr>
 
     
@@ -410,7 +416,8 @@ reading and writing packets of binary values easy to read and do.</p></div>
                 </td>
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>How to write a
+value to the array at the given position.</p></td>
         </tr>
 
     
@@ -509,6 +516,12 @@ reading and writing packets of binary values easy to read and do.</p></div>
 
 
 
+<div class="description">
+    <p>Create an object that can be used with <code>Object.defineProperty</code> to read
+and write values offset by <code>position</code> and the object's <code>this.offset</code>
+from <code>this.uint8a</code> by getting or setting the property.</p>
+</div>
+
 
 
 
@@ -560,7 +573,8 @@ reading and writing packets of binary values easy to read and do.</p></div>
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Additional offset with <code>this.offset</code> to read
+from or write to.</p></td>
         </tr>
 
     
@@ -583,6 +597,13 @@ reading and writing packets of binary values easy to read and do.</p></div>
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>A object that can be passed as the third argument to
+<code>Object.defineProperty</code>.</li>
+</ul>
+</div>
+
 
 
 <dl class="param-type">
@@ -651,6 +672,187 @@ reading and writing packets of binary values easy to read and do.</p></div>
 
 
 
+<div class="description">
+    <p>Read a value from <code>position</code> in <code>uint8a</code>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>uint8a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Uint8Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Array to read from.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>position</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Position in <code>uint8a</code> to read from.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Value read from <code>uint8a</code> at <code>position</code>.</li>
+</ul>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+
+    
+
+    <h4 class="name" id="~sizeOfCallback"><span class="type-signature"></span>sizeOfCallback<span class="signature">(uint8a, position)</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
 
 
 
@@ -756,313 +958,13 @@ reading and writing packets of binary values easy to read and do.</p></div>
     </dt>
     <dd>
         
-<span class="param-type">*</span>
+<span class="param-type">number</span>
 
 
     </dd>
 </dl>
 
     
-
-
-        
-    
-
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-
-        
-                
-
-    
-
-    <h4 class="name" id="~readCallback"><span class="type-signature"></span>readCallback<span class="signature">(uint8a, position)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>uint8a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Uint8Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>position</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-                
-
-    
-
-    <h4 class="name" id="~sizeOfCallback"><span class="type-signature"></span>sizeOfCallback<span class="signature">(uint8a, position)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>uint8a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Uint8Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>position</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             
@@ -1240,7 +1142,7 @@ reading and writing packets of binary values easy to read and do.</p></div>
 
     
 
-    <h4 class="name" id="~writeSizeOfCallback"><span class="type-signature"></span>writeSizeOfCallback<span class="signature">(uint8a, position, value)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~writeSizeOfCallback"><span class="type-signature"></span>writeSizeOfCallback<span class="signature">(uint8a, position, value)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -1403,6 +1305,24 @@ reading and writing packets of binary values easy to read and do.</p></div>
 
 
 
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
             

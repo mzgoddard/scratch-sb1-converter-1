@@ -149,7 +149,7 @@
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type"><a href="global.html#TYPES">TYPES</a></span>
 
 
             
@@ -159,7 +159,8 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p><a href="global.html#TYPES">TYPES</a> id that informs what the shape of
+this object is.</p></td>
         </tr>
 
     
@@ -182,7 +183,9 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Version number of this object. Some items in
+the same class may have different content and so will be different
+versions.</p></td>
         </tr>
 
     
@@ -205,7 +208,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>An array of fields in this FieldObject.</p></td>
         </tr>
 
     
@@ -374,7 +377,7 @@
 
         
             
-<h4 class="name" id="FIELDS"><span class="type-signature"></span>FIELDS<span class="type-signature"> :Object.&lt;string, number></span></h4>
+<h4 class="name" id="FIELDS"><span class="type-signature"></span>FIELDS<span class="type-signature"> :object</span></h4>
 
 
 
@@ -425,7 +428,7 @@
     <ul>
         <li>
             
-<span class="param-type">Object.&lt;string, number></span>
+<span class="param-type">object</span>
 
 
         </li>
@@ -575,7 +578,7 @@
 
     
 
-    <h4 class="name" id=".define"><span class="type-signature">(static) </span>define<span class="signature">(FIELDS, Super)</span><span class="type-signature"> &rarr; {function}</span></h4>
+    <h4 class="name" id=".define"><span class="type-signature">(static) </span>define<span class="signature">(FIELDS, Super<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span></h4>
 
     
 
@@ -649,6 +652,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -667,17 +672,25 @@
             <td class="type">
             
                 
-<span class="param-type">Object.&lt;string, number></span>
+<span class="param-type">object</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Mapping of ALL_CAPS keys to index in <a href="FieldObject.html#fields">FieldObject#fields</a>.</p></td>
         </tr>
 
     
@@ -697,10 +710,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>Parent class of the returned subclass.</p></td>
         </tr>
 
     
@@ -723,6 +746,12 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>FieldObject subclass constructor.</li>
+</ul>
+</div>
+
 
 
 <dl class="param-type">
